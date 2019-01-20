@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <div class="col mx-auto text-center">
+            <table class="table table-striped text-left">
+                <thead>
+                    <tr>
+                        <th>
+                            Type
+                        </th>
+                        <th>
+                            Symbol
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Shares
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>
+                            Total
+                        </th>
+                        <th>
+                            Date & Time
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in rows %}
+                        <tr>
+                            {% if row["type"] == 1 %}
+                                <td><span class="badge badge-danger">Purchase</span></td>
+                            {% else %}
+                                <td><span class="badge badge-success">Sale</span></td>
+                            {% endif %}
+                            <td>{{ row["symbol"] }}</td>
+                            <td>{{ row["company"] }}</td>
+                            <td>{{ row["shares"] }}</td>
+                            <td>{{ usd(row["cost"]) }}</td>
+                            <td>{{ usd(row["shares"] * row["cost"]) }}</td>
+                            <td>{{ row["date"] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

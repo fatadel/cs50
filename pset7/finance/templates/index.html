@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <div class="col mx-auto text-center">
+            <table class="table table-striped text-left">
+                <thead>
+                    <tr>
+                        <th>
+                            Symbol
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Shares
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>
+                            Total
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in rows %}
+                        <tr>
+                            <td>{{ row["symbol"] }}</td>
+                            <td>{{ row["company"] }}</td>
+                            <td>{{ row["shares"] }}</td>
+                            <td>{{ usd(row["price"]) }}</td>
+                            <td>{{ usd(row["shares"] * row["price"]) }}</td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="4">
+                            Cash
+                        </td>
+                        <td>
+                            {{ usd(balance) }}
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot class="font-weight-bold">
+                    <tr>
+                        <td colspan="4"></td>
+                        <td>
+                            {{ usd(total) }}
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+{% endblock %}

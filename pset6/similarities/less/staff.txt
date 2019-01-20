@@ -1,0 +1,13 @@
+    // compare strings' addresses
+        printf("same\n");
+    // get two strings
+#include <stdio.h>
+#include <cs50.h>
+    if (s == t)
+int main(void)
+    else
+    {
+    }
+}
+{
+

@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <div class="col-8 mx-auto">
+            <p>A share of {{ result["name"] }} ({{ result["symbol"] }}) costs {{ usd(result["price"]) }}.</p>
+        </div>
+    </div>
+{% endblock %}
